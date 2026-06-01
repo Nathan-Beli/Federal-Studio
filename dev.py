@@ -1,6 +1,19 @@
+import os
 import discord
-from discord import app_commands
 from discord.ext import commands
+
+# 1. Définit les intents (nécessaire pour éviter l'avertissement)
+intents = discord.Intents.default()
+intents.message_content = True 
+
+import os
+# ... ton code ...
+bot.run(os.environ.get("DISCORD_TOKEN"))
+
+# 2. Récupère le token depuis les variables d'environnement (Render)
+TOKEN = os.environ.get("DISCORD_TOKEN")
+
+
 
 class MyBot(commands.Bot):
     def __init__(self):
@@ -31,4 +44,4 @@ async def salon(interaction: discord.Interaction, nom: str, emoji: str, categori
     
     await interaction.response.send_message(f"Le salon {nouveau_salon.mention} a été créé avec succès !", ephemeral=True)
 
-bot.run("TOKEN")
+bot.run(DISCORD_TOKEN)
